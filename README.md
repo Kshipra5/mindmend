@@ -81,26 +81,41 @@ This model is loaded into the Flask application to generate predictions.
 ## 📂 Project Structure
 
 Mind-Mend
+
 │
 ├── app.py                  # Main Flask application
+
 ├── db.py                   # Database connection and functions
+
 ├── train_model.py          # Script used to train ML model
+
 │
 ├── mental_health.csv       # Dataset used for training
+
 ├── mental_health_model.pkl # Trained machine learning model
+
 │
 ├── users.db                # SQLite database
+
 │
 ├── templates               # HTML templates
+
 │   ├── login.html
+
 │   ├── register.html
+
 │   ├── dashboard.html
+
 │   └── result.html
+
 │
 ├── static                  # CSS, images, and JS
+
 │
 ├── requirements.txt        # Python dependencies
+
 └── README.md               # Project documentation
+
 
 
 ## 💻 Installation Guide
