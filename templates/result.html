@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mind Mend | Assessment Result</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+background:#f8faf9;
+color:#1f2933;
+padding:40px 20px
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+background:#fff;
+padding:50px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(15,118,110,.08)
+}
+
+h2{color:#0f766e;margin-bottom:10px}
+
+.sub-text{
+color:#134e4a;
+margin-bottom:30px;
+font-weight:300
+}
+
+.status-box{
+background:#e0f7f4;
+padding:25px;
+border-radius:16px;
+margin-bottom:30px
+}
+
+.progress-bar{
+margin-top:15px;
+height:12px;
+background:#d1fae5;
+border-radius:999px;
+overflow:hidden
+}
+
+.progress-fill{
+height:100%;
+background:#0f766e;
+transition:width 1.5s ease
+}
+
+.activity-card{
+margin-top:25px;
+padding:25px;
+border-radius:18px;
+border:1px solid #d1fae5;
+box-shadow:0 10px 25px rgba(15,118,110,.05);
+transition:.3s
+}
+
+.activity-card:hover{
+transform:translateY(-4px);
+box-shadow:0 15px 30px rgba(15,118,110,.08)
+}
+
+button{
+margin-top:15px;
+padding:12px 22px;
+border-radius:999px;
+border:none;
+background:#0f766e;
+color:#fff;
+font-weight:500;
+cursor:pointer;
+transition:.3s
+}
+
+button:hover{
+background:#137c72;
+transform:translateY(-2px)
+}
+
+.stop-btn{
+background:#64748b
+}
+
+.hidden{display:none}
+
+textarea{
+width:100%;
+margin-top:15px;
+padding:15px;
+border-radius:14px;
+border:1px solid #cbd5e1
+}
+
+.breathing-container{text-align:center;margin-top:20px}
+
+.breathing-circle{
+width:140px;
+height:140px;
+border-radius:50%;
+margin:25px auto;
+background:radial-gradient(circle,#7dd3fc,#0f766e);
+box-shadow:0 0 25px rgba(15,118,110,.3)
+}
+
+.breath-instruction{
+color:#0f766e;
+font-size:18px;
+font-weight:500;
+margin-top:10px
+}
+
+.breathing-progress{
+height:6px;
+background:#d1fae5;
+border-radius:999px;
+margin-top:15px;
+overflow:hidden
+}
+
+.breathing-bar{
+height:100%;
+width:0%;
+background:#0f766e;
+transition:width 6s linear
+}
+
+.emotion-section{margin-top:60px}
+
+.emotion-header{
+font-size:22px;
+color:#0f766e;
+margin-bottom:10px
+}
+
+.emotion-counter{margin-bottom:15px;color:#0f766e}
+
+.emotions-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+gap:12px
+}
+
+.emotion-btn{
+padding:10px;
+border-radius:999px;
+border:2px solid #0f766e;
+background:#fff;
+color:#0f766e;
+font-size:13px;
+cursor:pointer;
+transition:.3s
+}
+
+.emotion-btn:hover{background:#cfeeea}
+
+.emotion-btn.selected{
+background:#0f766e;
+color:#fff
+}
+
+.summary-box{
+margin-top:20px;
+padding:20px;
+border-radius:14px;
+background:#e0f7f4;
+display:none
+}
+
+.helpline-box{
+margin-top:50px;
+padding:25px;
+border-radius:16px;
+background:#fef2f2;
+border:1px solid #fecaca
+}
+
+.sos-btn{
+background:#dc2626;
+margin-top:20px
+}
+
+.action-buttons{
+margin-top:40px;
+display:flex;
+gap:20px;
+flex-wrap:wrap
+}
+
+.action-buttons a{
+padding:12px 25px;
+border-radius:999px;
+text-decoration:none;
+font-weight:500
+}
+
+.dashboard-btn{background:#0f766e;color:#fff}
+.retake-btn{background:#e0f7f4;color:#0f766e}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Your Emotional Assessment</h2>
+<p class="sub-text">This reflects your current emotional state. It does not replace professional advice.</p>
+
+<div class="status-box">
+
+<strong>{{ prediction }}</strong>
+
+<div class="progress-bar">
+<div class="progress-fill" id="progressFill" style="width: {{ severity }}%;"></div>
+</div>
+
+</div>
+
+{% for activity in strategies %}
+
+<div class="activity-card">
+
+<h3>{{ activity.title }}</h3>
+<p>{{ activity.description }}</p>
+
+{% if activity.type == "breathing" %}
+
+<button onclick="startBreathing('{{ loop.index }}')">
+Start Breathing Session
+</button>
+
+<button onclick="stopBreathing('{{ loop.index }}')" class="stop-btn">
+Stop Session
+</button>
+
+<div class="breathing-container hidden" id="breathing-{{ loop.index }}">
+
+<div class="breathing-circle" id="circle-{{ loop.index }}"></div>
+
+<p id="breath-text-{{ loop.index }}" class="breath-instruction">
+Tap start to begin
+</p>
+
+<div class="breathing-progress">
+<div class="breathing-bar" id="breath-bar-{{ loop.index }}"></div>
+</div>
+
+</div>
+
+{% endif %}
+
+{% if activity.type == "reflection" %}
+<textarea rows="4" placeholder="Write your thoughts here..."></textarea>
+{% endif %}
+
+{% if activity.type == "grounding" %}
+
+<button onclick="showGrounding('{{ loop.index }}')">
+Start Grounding
+</button>
+
+<div class="hidden" id="ground-{{ loop.index }}">
+<p>5 things you see</p>
+<p>4 things you feel</p>
+<p>3 things you hear</p>
+<p>2 things you smell</p>
+<p>1 thing you taste</p>
+</div>
+
+{% endif %}
+
+</div>
+
+{% endfor %}
+
+<div class="activity-card">
+
+<h3>5 Minute Body Reset</h3>
+
+<p>
+Stand up slowly. Roll your shoulders. Stretch your arms overhead.
+Take 5 calm breaths and allow your body to release tension.
+</p>
+
+<button onclick="showResetMessage()">Mark Complete</button>
+
+<p id="reset-message" style="margin-top:10px;color:#0f766e;font-weight:500;display:none;">
+That was a kind thing to do for yourself. Even small moments of care can help your mind and body reconnect.
+</p>
+
+</div>
+
+<div class="activity-card">
+
+<h3>Personal Reflection Journal</h3>
+
+<p>
+Writing your thoughts can sometimes make emotions easier to understand.
+You can write anything here — this space is just for you.
+</p>
+
+<textarea id="journal-entry" rows="5" placeholder="Write your thoughts here..."></textarea>
+
+<button onclick="saveJournal()">Save Reflection</button>
+
+<p id="journal-message" style="margin-top:10px;color:#0f766e;font-weight:500;display:none;">
+Your reflection has been saved. Expressing your thoughts is a meaningful step.
+</p>
+
+</div>
+
+<div class="emotion-section">
+
+<div class="emotion-header">What are you feeling right now?</div>
+
+<div class="emotion-counter" id="emotionCounter">0 of 3 selected</div>
+
+<div class="emotions-grid" id="emotions"></div>
+
+<button onclick="submitEmotions()">Submit Emotions</button>
+
+<div class="summary-box" id="emotion-summary">
+<strong>Your selected emotions:</strong>
+<p id="selected-emotions"></p>
+</div>
+
+</div>
+
+<div class="helpline-box">
+
+<strong>If you need immediate help:</strong>
+
+<p>🇮🇳 India: 1800-599-0019</p>
+<p>🇺🇸 USA: 988</p>
+<p>🇬🇧 UK: 116 123</p>
+<p>🌍 International: findahelpline.com</p>
+
+{% if severity >= 75 %}
+<button class="sos-btn" onclick="showSOS()">SOS – I Need Immediate Help</button>
+{% endif %}
+
+</div>
+
+<div class="action-buttons">
+
+<a href="{{ url_for('dashboard') }}" class="dashboard-btn">
+Go to Dashboard
+</a>
+
+<a href="{{ url_for('questionnaire') }}" class="retake-btn">
+Retake Assessment
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+window.onload=function(){
+document.getElementById('progressFill').style.width="{{ severity }}%"
+}
+
+let breathingIntervals={}
+
+function startBreathing(index){
+
+const wrap=document.getElementById('breathing-'+index)
+const circle=document.getElementById('circle-'+index)
+const text=document.getElementById('breath-text-'+index)
+const bar=document.getElementById('breath-bar-'+index)
+
+wrap.classList.remove('hidden')
+
+let steps=[
+{txt:'Inhale slowly',scale:1.4,width:33},
+{txt:'Hold your breath',scale:1.4,width:66},
+{txt:'Exhale gently',scale:1,width:100}
+]
+
+let i=0
+
+function cycle(){
+
+let step=steps[i]
+
+text.innerText=step.txt
+circle.style.transform='scale('+step.scale+')'
+bar.style.width=step.width+'%'
+
+i=(i+1)%steps.length
+
+}
+
+cycle()
+
+breathingIntervals[index]=setInterval(cycle,2000)
+
+/* NEW FEATURE: auto stop after 60 seconds */
+
+setTimeout(()=>{
+
+clearInterval(breathingIntervals[index])
+
+text.innerText="Breathing session complete. You can stop now.I hope you are feeling little better nowpyt"
+
+circle.style.transform='scale(1)'
+bar.style.width='100%'
+
+},60000)
+
+}
+
+function stopBreathing(index){
+
+clearInterval(breathingIntervals[index])
+
+document.getElementById('breath-text-'+index).innerText="Session paused. Take a moment to breathe naturally."
+
+document.getElementById('circle-'+index).style.transform='scale(1)'
+
+document.getElementById('breath-bar-'+index).style.width='0%'
+
+}
+
+function showGrounding(index){
+document.getElementById('ground-'+index).classList.remove('hidden')
+}
+
+function showResetMessage(){
+document.getElementById("reset-message").style.display="block"
+}
+
+function saveJournal(){
+
+let entry=document.getElementById("journal-entry").value
+
+if(entry.trim()===""){
+alert("Write something before saving.")
+return
+}
+
+localStorage.setItem("mindmend_journal",entry)
+
+document.getElementById("journal-message").style.display="block"
+
+}
+
+function showSOS(){
+alert("You are not alone. Please consider reaching out to a trusted person or a mental health professional immediately.")
+}
+
+const emotions=["Happy","Sad","Angry","Anxious","Excited","Lonely","Overwhelmed","Calm","Hopeful","Tired","Frustrated","Grateful","Confused","Motivated","Numb","Insecure","Confident","Peaceful","Stressed","Optimistic"]
+
+const container=document.getElementById('emotions')
+const counter=document.getElementById('emotionCounter')
+
+let selected=[]
+
+emotions.forEach(e=>{
+
+let btn=document.createElement('button')
+btn.innerText=e
+btn.className='emotion-btn'
+
+btn.onclick=()=>{
+
+if(selected.includes(e)){
+selected=selected.filter(x=>x!==e)
+btn.classList.remove('selected')
+}
+
+else if(selected.length<3){
+selected.push(e)
+btn.classList.add('selected')
+}
+
+counter.innerText=selected.length+' of 3 selected'
+
+}
+
+container.appendChild(btn)
+
+})
+
+function submitEmotions(){
+
+if(selected.length===3){
+
+document.getElementById('emotion-summary').style.display='block'
+
+document.getElementById('selected-emotions').innerText=selected.join(', ')
+
+}
+
+else{
+alert('Please select exactly 3 emotions.')
+}
+
+}
+
+</script>
+
+</body>
+</html>

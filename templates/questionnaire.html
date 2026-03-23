@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mind Mend – Gentle Check-In</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='questionnaire.css') }}">
+</head>
+<body>
+
+<div class="card">
+    <div class="statement" id="statement"></div>
+    <div class="reassurance">
+        Take a moment. There are no right or wrong answers.
+    </div>
+
+    <div class="options" id="options"></div>
+    <div class="progress" id="progress"></div>
+</div>
+
+<form id="questionForm" method="POST" action="{{ url_for('predict') }}"></form>
+
+<script>
+    const questions = [
+        "Right now, I feel mood swings.",                // q1
+        "I have withdrawn from social interactions.",    // q2
+        "My sleep or appetite has changed.",             // q3
+        "I am having difficulty coping with stress.",   // q4
+        "I experience confused thinking.",              // q5
+        "I have excessive fear or anxiety.",            // q6
+        "I have used substances to cope recently.",     // q7
+        "I feel angry or irritable often.",             // q8
+        "I feel detached from reality.",                // q9
+        "I have thoughts of self-harm."                 // q10
+    ];
+
+    const options = [
+        ["Not at all", "A little", "Moderate", "Severe"],
+        ["Not at all", "Rarely", "Sometimes", "Often"],
+        ["Not at all", "A little", "Moderate", "Severe"],
+        ["Not at all", "A little", "Moderate", "Severe"],
+        ["Not at all", "A little", "Moderate", "Severe"],
+        ["Not at all", "A little", "Moderate", "Severe"],
+        ["Not at all", "A little", "Moderate", "Severe"],
+        ["Not at all", "A little", "Moderate", "Severe"],
+        ["Not at all", "A little", "Moderate", "Severe"],
+        ["Not at all", "A little", "Moderate", "Severe"]
+    ];
+
+    let index = 0;
+    const form = document.getElementById("questionForm");
+
+    function renderQuestion() {
+        document.getElementById("statement").innerText = questions[index];
+        document.getElementById("progress").innerText =
+            `Step ${index + 1} of ${questions.length}`;
+
+        const optionsDiv = document.getElementById("options");
+        optionsDiv.innerHTML = "";
+
+        options[index].forEach((text, value) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.innerText = text;
+            btn.onclick = () => saveAnswer(value);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function saveAnswer(value) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = `q${index + 1}`;
+        input.value = value;
+        form.appendChild(input);
+
+        index++;
+
+        if (index < questions.length) {
+            renderQuestion();
+        } else {
+            form.submit();
+        }
+    }
+
+    renderQuestion();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Mind Mend</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+
+<div class="login-container">
+
+    <!-- LEFT VISUAL -->
+    <div class="login-visual">
+        <div class="overlay">
+            <h1>Welcome back</h1>
+            <p>
+                This is your personal space to pause, breathe,
+                and gently understand what’s going on inside.
+            </p>
+            <p class="soft-line">
+                No judgment. No pressure. Just care.
+            </p>
+        </div>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div class="login-card">
+        <h2>Login in to Mind Mend</h2>
+        <p class="form-subtext">
+            Let’s continue where you left off.
+        </p>
+
+        <form method="POST">
+    <label>Email</label>
+    <input type="email"
+           name="email"
+           placeholder="you@example.com"
+           required>
+
+    <label>Password</label>
+    <input type="password"
+           name="password"
+           placeholder="••••••••"
+           required>
+
+    <div class="forgot-row">
+        <a href="/forgot-password">Forgot your password?</a>
+    </div>{% if error %}
+    <div style="
+        background-color: #fdecea;
+        color: #b91c1c;
+        border-left: 4px solid #e11d48;
+        padding: 10px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        margin-bottom: 16px;
+    ">
+        {{ error }}
+    </div>
+{% endif %}
+
+
+
+    <button type="submit">Login</button>
+</form>
+        <p class="signup-text">
+            New here?
+            <a href="/signup">Create a gentle start</a>
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>

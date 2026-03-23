@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account | Mind Mend</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+
+<div class="login-container">
+
+    <!-- LEFT SIDE VISUAL -->
+    <div class="login-visual">
+        <div class="overlay">
+            <h1>You’re not alone </h1>
+            <p>
+                Creating an account helps you track your emotional journey
+                in a safe and private space.
+            </p>
+            <p class="soft-line">
+                Take this step gently — we’re here with you.
+            </p>
+        </div>
+    </div>
+
+    <!-- SIGNUP FORM -->
+    <div class="login-card">
+        <h2>Create your account</h2>
+        <p class="form-subtext">
+            A few details to get started — that’s all.
+        </p>
+
+        <form method="POST">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="number" name="contact" placeholder="Contact Number" required>
+    <input type="number" name="age" placeholder="Age" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Sign Up</button>
+</form>
+{% if error %}
+    <div style="
+        background-color: #fff1f2;
+        color: #9f1239;
+        border-left: 4px solid #e11d48;
+        padding: 12px 14px;
+        border-radius: 6px;
+        font-size: 14px;
+        margin-bottom: 16px;
+    ">
+        {{ error }}
+    </div>
+{% endif %}
+        <p class="signup-text">
+            Already have an account?
+            <a href="/login">Login in here</a>
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>

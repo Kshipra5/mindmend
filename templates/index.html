@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mind Mend | Mental Well-being Check-in</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">
+        <span class="logo-icon"></span>
+        <span class="logo-text"><b>Mind Mend</b></span>
+    </div>
+    <div class="nav-links">
+        <button onclick="location.href='/login'" class="btn-outline">Login</button>
+        <button onclick="location.href='/signup'" class="btn-outline">Sign Up</button>
+    </div>
+</nav>
+
+
+<! hero!>
+<section class="hero">
+    <div class="hero-text">
+        <h1>Take a Moment for Yourself</h1>
+        <p>
+            Mind Mend is your gentle companion for mental well-being. Pause, breathe,
+            and reflect — there’s no rush, no pressure, just understanding.
+        </p>
+        <a href="/signup" class="btn-primary">Start Your Gentle Check-in</a>
+    </div>
+</section>
+
+
+<!-- AWARENESS -->
+<section class="awareness">
+    <h2>Why mental health check-ins matter</h2>
+    <p class="awareness-intro">
+        Mental health isn’t static — it changes with experiences, stress,
+        relationships, and daily life. Regular check-ins help you notice
+        emotional patterns before they become overwhelming.
+    </p>
+
+    <!-- STRESS -->
+    <div class="awareness-box">
+        <img src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8" alt="stress">
+        <div class="awareness-content">
+            <h3>Stress & Burnout</h3>
+            <p>
+                Stress often builds quietly — tight deadlines, responsibilities,
+                and the pressure to keep going can slowly drain your energy.
+                Burnout doesn’t mean weakness; it means you’ve been strong for too long.
+            </p>
+
+            <ul>
+                <li>Constant fatigue, even after resting</li>
+                <li>Loss of motivation or emotional numbness</li>
+                <li>Feeling overwhelmed by small tasks</li>
+            </ul>
+
+            <div class="interactive">
+                <p>💭 <strong>Pause & reflect:</strong></p>
+                <p class="question">“When was the last time you truly rested — without guilt?”</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ANXIETY -->
+    <div class="awareness-box">
+        <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca" alt="anxiety">
+        <div class="awareness-content">
+            <h3>Anxiety & Overthinking</h3>
+            <p>
+                Anxiety can trap you in endless “what ifs.”
+                Your mind may replay situations, imagine worst outcomes,
+                or struggle to feel calm — even when things seem okay.
+            </p>
+
+            <ul>
+                <li>Racing thoughts or constant worry</li>
+                <li>Difficulty relaxing or sleeping</li>
+                <li>Feeling uneasy without a clear reason</li>
+            </ul>
+
+            <div class="interactive">
+                <p>🤍<strong>Gentle reminder:</strong></p>
+                <p class="question">
+                    “Not every thought deserves your attention.
+                    Awareness is the first step to peace.”
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+    <h2>How Mind Mend works</h2>
+    <p class="how-intro">
+        Mind Mend is designed to feel simple, gentle, and human.
+        There’s no pressure to “fix” yourself — just space to understand what you’re feeling.
+    </p>
+
+    <div class="steps">
+
+        <div class="step-card">
+            <span class="step-number">1</span>
+            <h3>Answer some questions</h3>
+            <p>
+                You’ll be guided through short, thoughtfully written questions
+                that help you express how you’ve been feeling — without needing
+                the “right” words.
+            </p>
+            <p class="step-reflect">
+                 Take your time. There’s no rush.
+            </p>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">2</span>
+            <h3>Reflect on your emotional state</h3>
+            <p>
+                As you answer, patterns begin to appear.
+                You may notice emotions you’ve been carrying quietly
+                or reactions you hadn’t paid attention to before.
+            </p>
+            <p class="step-reflect">
+                 Awareness is the first step toward care.
+            </p>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">3</span>
+            <h3>Receive supportive insights</h3>
+            <p>
+                Based on your responses, Mind Mend offers gentle insights —
+                not labels or diagnoses — just understanding and direction.
+            </p>
+            <p class="step-reflect">
+                 You’re not broken. You’re human.
+            </p>
+        </div>
+
+    </div>
+</section>
+<div class="center-button">
+    <a href="/signup" class="btn-primary">
+        Take a gentle check-in
+    </a>
+</div>
+
+
+<!-- SAFETY -->
+<section class="safety">
+    <p>
+        If you’re feeling overwhelmed or struggling to cope,
+        reaching out can be a powerful first step.
+    </p>
+    <p class="helpline">
+        🇮🇳 <strong>AASRA Helpline (24×7):</strong> +91 9820466726
+    </p>
+</section>
+
+<footer>
+    <p>© 2026 Mind Mend. Built with care </p>
+</footer>
+
+</body>
+</html>
