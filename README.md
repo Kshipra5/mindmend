@@ -1,204 +1,260 @@
-# 🧠 Mind Mend
-### AI-Based Mental Health Support System
+# 🧠 MindMend
 
-Mind Mend is a Machine Learning powered web application that helps users understand their mental health condition through a questionnaire-based assessment.
+An AI-powered mental health assessment and wellness platform that combines **Machine Learning**, **Full-Stack Web Development**, and **Data Analytics** to help users monitor, assess, and understand their mental well-being.
 
-The system collects user responses and uses a trained machine learning model to analyze patterns and predict possible mental health concerns. The goal of this project is to demonstrate how Artificial Intelligence can assist mental health awareness and early detection systems.
+MindMend provides a secure environment where users can register, complete mental health assessments, track their moods, interact with an AI-powered chatbot, and visualize their emotional journey through an interactive analytics dashboard. The platform integrates a **Random Forest Machine Learning model** to predict a user's mental health risk level based on questionnaire responses, enabling early awareness and encouraging proactive self-care.
 
-⚠️ This project is for educational and research purposes only and is not a substitute for professional medical advice.
+---
 
+## ✨ Features
 
-## 📌 Project Objective
+* 🔐 Secure user authentication using JWT
+* 👤 User registration and login
+* 📧 Email-based password recovery
+* 📝 Mental health assessment questionnaire
+* 🧠 Machine Learning-based mental health risk prediction
+* 😊 Daily mood tracking
+* 💬 AI-powered mental health chatbot
+* 📊 Interactive analytics dashboard
+* 📈 Weekly, monthly, and yearly mood analytics
+* 📚 Assessment and chat history
+* 🚨 SOS emergency support feature
+* ☁️ Secure MongoDB data storage
 
-Mental health problems often remain undetected due to lack of awareness or access to professional support.
+---
 
-The objective of this project is to:
+## 🛠️ Tech Stack
 
-- Provide a simple self-assessment platform
-- Use machine learning to detect mental health patterns
-- Help users gain initial insights about their mental health
-- Demonstrate integration of AI with web applications
+### Frontend
 
+* React.js
+* HTML5
+* CSS3
+* JavaScript
 
-## 🚀 Key Features
+### Backend
 
-### User Authentication
-Users can register and log in securely. User data is stored in a local database.
+* Flask
+* Flask-JWT-Extended
+* Flask-Mail
+* REST APIs
 
-### Mental Health Questionnaire
-Users answer a set of questions related to their mental health and lifestyle.
+### Machine Learning
 
-### Machine Learning Prediction
-A trained ML model processes the responses and predicts possible mental health conditions.
+* Python
+* Scikit-learn
+* Random Forest Classifier
+* Pandas
+* NumPy
+* Joblib
+* Label Encoding
+* Train-Test Split
+* Feature Importance Analysis
+* Model Evaluation (Accuracy, Classification Report, Confusion Matrix)
 
-### Interactive Web Interface
-The application provides an easy-to-use web interface for users.
+### Database
 
-### Data Storage
-User login information and session data are stored using SQLite.
+* MongoDB
 
+### Development Tools
 
-## 🛠️ Technology Stack
+* Git
+* GitHub
+* VS Code
+* Postman
 
-Programming Language: Python  
-Backend Framework: Flask  
-Machine Learning: Scikit-learn  
-Data Processing: Pandas, NumPy  
-Frontend: HTML, CSS  
-Database: SQLite  
+---
 
+## 🧠 Machine Learning Pipeline
 
-## ⚙️ System Workflow
+The prediction model was developed using **Scikit-learn** to classify a user's mental health risk level based on assessment responses.
 
-1. User registers or logs into the application
-2. User fills the mental health questionnaire
-3. The system processes the responses
-4. The trained ML model analyzes the data
-5. The system predicts mental health status
-6. The result is displayed to the user
+### Workflow
 
+1. Load and preprocess the mental health dataset using Pandas.
+2. Remove non-predictive features to prevent data leakage.
+3. Encode target labels using LabelEncoder.
+4. Perform a stratified train-test split.
+5. Train a Random Forest Classifier with optimized hyperparameters.
+6. Evaluate the model using:
 
-## 🧠 Machine Learning Model
+   * Accuracy Score
+   * Classification Report
+   * Confusion Matrix
+7. Analyze feature importance to identify significant mental health indicators.
+8. Save the trained model and label encoder using Joblib for deployment with Flask.
 
-The machine learning model was trained using a dataset containing mental health indicators.
+---
 
-ML Development Process:
+## 📊 Dashboard
 
-1. Data Collection
-2. Data Preprocessing
-3. Feature Engineering
-4. Model Training
-5. Model Evaluation
-6. Model Saving using Pickle
+The dashboard enables users to monitor their mental well-being through:
 
-The trained model is saved as:
+* Mood trend visualization
+* Weekly, monthly, and yearly analytics
+* Emotional progress tracking
+* Assessment history
+* Chat history overview
+* Personalized mental health insights
 
-mental_health_model.pkl
-
-This model is loaded into the Flask application to generate predictions.
-
+---
 
 ## 📂 Project Structure
 
-Mind-Mend
-
+```text
+MindMend/
 │
-├── app.py                  # Main Flask application
-
-├── db.py                   # Database connection and functions
-
-├── train_model.py          # Script used to train ML model
-
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── assets/
+│   │   └── App.js
+│   └── package.json
 │
-├── mental_health.csv       # Dataset used for training
-
-├── mental_health_model.pkl # Trained machine learning model
-
+├── backend/
+│   ├── app.py
+│   ├── routes/
+│   ├── models/
+│   ├── utils/
+│   ├── requirements.txt
+│   ├── mental_health_model.pkl
+│   └── label_encoder.pkl
 │
-├── users.db                # SQLite database
-
+├── dataset/
+│   └── mindmend_mental_health_dataset.csv
 │
-├── templates               # HTML templates
+└── README.md
+```
 
-│   ├── login.html
+---
 
-│   ├── register.html
+## 🚀 Installation
 
-│   ├── dashboard.html
+### Clone the Repository
 
-│   └── result.html
+```bash
+git clone https://github.com/your-username/MindMend.git
+cd MindMend
+```
 
-│
-├── static                  # CSS, images, and JS
+### Backend Setup
 
-│
-├── requirements.txt        # Python dependencies
-
-└── README.md               # Project documentation
-
-
-
-## 💻 Installation Guide
-
-### 1. Clone the Repository
-
-git clone https://github.com/yourusername/mind-mend.git
-
-### 2. Navigate to Project Folder
-
-cd mind-mend
-
-### 3. Create Virtual Environment
+```bash
+cd backend
 
 python -m venv venv
 
-### 4. Activate Virtual Environment
-
-Windows:
-
+# Windows
 venv\Scripts\activate
 
-Mac/Linux:
-
+# macOS/Linux
 source venv/bin/activate
-
-### 5. Install Dependencies
 
 pip install -r requirements.txt
 
-### 6. Run the Application
-
 python app.py
+```
 
-### 7. Open in Browser
+### Frontend Setup
 
-http://127.0.0.1:5000
+```bash
+cd frontend
 
+npm install
+npm start
+```
 
-## 📊 Dataset Information
+---
 
-The dataset used for training contains information related to mental health factors such as:
+## ⚙️ Environment Variables
 
-- Stress levels
-- Work environment
-- Lifestyle habits
-- Personal mental health history
+Create a `.env` file inside the backend directory.
 
-Dataset file:
+```env
+MONGO_URI=your_mongodb_connection_string
 
-mental_health.csv
+JWT_SECRET_KEY=your_secret_key
 
+MAIL_SERVER=smtp.gmail.com
+MAIL_PORT=587
 
-## 🔮 Future Improvements
+MAIL_USERNAME=your_email@gmail.com
+MAIL_PASSWORD=your_app_password
 
-Possible future enhancements include:
+SECRET_KEY=your_flask_secret
+```
 
-- Deploying the application on cloud platforms
-- Using advanced machine learning models
-- Integrating MongoDB or cloud databases
-- Adding data visualization dashboards
-- Creating a mobile-friendly UI
-- Integrating mental health support resources
+---
 
+## 📈 Model Evaluation
+
+The Machine Learning model is evaluated using multiple performance metrics to ensure reliable predictions:
+
+* Accuracy Score
+* Classification Report
+* Confusion Matrix
+* Feature Importance Analysis
+
+These metrics help validate the model's performance and identify the factors that contribute most to mental health risk prediction.
+
+---
+
+## 🔒 Security
+
+MindMend prioritizes user privacy through:
+
+* JWT-based authentication
+* Password hashing
+* Protected API endpoints
+* Secure password recovery
+* Encrypted user credential handling
+* Secure MongoDB data storage
+
+---
+
+## 🌱 Future Enhancements
+
+* Personalized wellness recommendations
+* Voice-based emotion analysis
+* Therapist appointment scheduling
+* PDF report generation
+* Report sharing with healthcare professionals
+* Mobile application
+* Daily wellness reminders
+* Dark mode support
+
+---
 
 ## ⚠️ Disclaimer
 
-This project is developed for educational purposes only.
+This project was developed as part of an academic major project for educational and portfolio purposes. It is intended to demonstrate practical knowledge of **Machine Learning, Artificial Intelligence, Full-Stack Web Development, and Data Analytics**.
 
-The predictions generated by the system are not medical diagnoses. Anyone experiencing mental health problems should consult qualified healthcare professionals.
+The source code, design, documentation, and implementation are the intellectual work of the author. Unauthorized copying, redistribution, modification, or submission of this project as academic work without permission is prohibited.
 
+This application is **not a substitute for professional medical advice, diagnosis, or treatment**. The predictions generated by the Machine Learning model are intended solely for educational and research purposes and should not be considered clinical recommendations.
+
+---
 
 ## 👩‍💻 Author
 
-Kshipra Navin  
-Computer Science Student  
+**Kshipra Navin**
 
-Interested in:
-- Machine Learning
-- Artificial Intelligence
-- Web Development
+B.Tech – Computer Science Engineering
 
+**Skills:** Python • Machine Learning • React.js • Flask • MongoDB • Java • SQL • Data Analytics
 
-## 📄 License
+---
 
-This project is open source and available for learning and research purposes.
+## 📬 Contact
+
+Feel free to connect for collaboration, project discussions, or opportunities.
+
+* GitHub: https://github.com/your-username
+* LinkedIn: https://linkedin.com/in/your-profile
+
+---
+
+⭐ **If you found this project interesting, consider giving it a Star on GitHub!**
+
