@@ -1,0 +1,191 @@
+/* ================= RESET ================= */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ================= PAGE ================= */
+.reset-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e6f4f2;
+}
+
+/* ================= CONTAINER ================= */
+.reset-container {
+  display: flex;
+  width: 900px;
+  max-width: 95%;
+  height: 540px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(15, 118, 110, 0.15);
+}
+
+/* ================= LEFT SIDE ================= */
+.reset-left {
+  flex: 1;
+  background: linear-gradient(135deg, #0f766e, #115e59);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+
+  pointer-events: none;
+  position: relative;
+  z-index: 1;
+}
+
+.overlay h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.overlay p {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.soft-line {
+  margin-top: 10px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* ================= RIGHT SIDE ================= */
+.reset-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: relative;
+  z-index: 2;
+}
+
+.reset-card h2 {
+  margin-bottom: 8px;
+  color: #1f2933;
+}
+
+.subtext {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+/* ================= FORM ================= */
+.reset-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.reset-card label {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+/* ================= INPUT GROUP ================= */
+.input-group {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 60px 12px 12px; /* space for Show/Hide */
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #ffffff;
+}
+
+/* FOCUS EFFECT */
+.input-group input:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.2);
+}
+
+/* ================= SHOW / HIDE ================= */
+.toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #0f766e;
+  cursor: pointer;
+  font-weight: 500;
+  user-select: none;
+}
+
+.toggle:hover {
+  text-decoration: underline;
+}
+
+/* ================= PASSWORD STRENGTH ================= */
+.strength {
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 12px;
+}
+
+.strength.weak {
+  color: #dc2626;
+}
+
+.strength.medium {
+  color: #f59e0b;
+}
+
+.strength.strong {
+  color: #16a34a;
+}
+
+/* ================= MATCH STATUS ================= */
+.match {
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.match.success {
+  color: #16a34a;
+}
+
+.match.error {
+  color: #dc2626;
+}
+
+/* ================= BUTTON ================= */
+.reset-card button {
+  padding: 12px;
+  background: #0f766e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.reset-card button:hover {
+  background: #115e59;
+}
+
+/* ================= MESSAGE ================= */
+.message {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #0f766e;
+}

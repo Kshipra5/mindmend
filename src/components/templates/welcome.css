@@ -1,0 +1,454 @@
+/* =========================================================
+   WELCOME PAGE
+========================================================= */
+
+.welcome-page {
+  min-height: 100vh;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow-x: hidden;
+
+  padding: 40px 20px 60px;
+
+  background: linear-gradient(
+    135deg,
+    #dff7f3 0%,
+    #edfdf9 40%,
+    #f5fffd 100%
+  );
+}
+
+/* =========================================================
+   BACKGROUND BLOBS
+========================================================= */
+
+.welcome-page::before,
+.welcome-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  filter: blur(100px);
+
+  opacity: 0.25;
+
+  z-index: 0;
+}
+
+.welcome-page::before {
+  top: -140px;
+  left: -120px;
+
+  background: #0f766e;
+}
+
+.welcome-page::after {
+  bottom: -140px;
+  right: -120px;
+
+  background: #14b8a6;
+}
+
+/* =========================================================
+   WELCOME CARD
+========================================================= */
+
+.welcome-card {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 850px;
+
+  overflow: hidden;
+
+  padding: 50px 42px;
+
+  border-radius: 34px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.72),
+    rgba(255,255,255,0.46)
+  );
+
+  border: 1px solid rgba(255,255,255,0.45);
+
+  backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 24px 60px rgba(15,118,110,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+
+  animation: fadeUp 0.7s ease;
+}
+
+.welcome-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(45,212,191,0.16),
+    transparent 70%
+  );
+
+  top: -120px;
+  right: -100px;
+
+  filter: blur(30px);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.welcome-card h1 {
+  font-size: 3rem;
+
+  line-height: 1.1;
+
+  color: #0f766e;
+
+  margin-bottom: 16px;
+
+  font-weight: 700;
+
+  letter-spacing: -1px;
+}
+
+/* =========================================================
+   TYPING TEXT
+========================================================= */
+
+.typing-text {
+  font-size: 1.1rem;
+
+  color: #4b6470;
+
+  margin-bottom: 18px;
+
+  min-height: 28px;
+
+  font-weight: 500;
+}
+
+.cursor {
+  display: inline-block;
+
+  margin-left: 2px;
+
+  color: #14b8a6;
+
+  animation: blink 1s infinite;
+}
+
+/* =========================================================
+   SUPPORT TEXT
+========================================================= */
+
+.welcome-support {
+  color: #5f7278;
+
+  line-height: 1.9;
+
+  font-size: 1rem;
+
+  margin-bottom: 32px;
+}
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.primary-btn {
+  width: 100%;
+
+  padding: 17px;
+
+  border: none;
+
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  background: linear-gradient(
+    135deg,
+    #0f766e,
+    #14b8a6
+  );
+
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  transition: all 0.35s ease;
+
+  box-shadow:
+    0 16px 36px rgba(15,118,110,0.22);
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 22px 45px rgba(15,118,110,0.28);
+}
+
+.primary-btn:active {
+  transform: scale(0.98);
+}
+
+/* =========================================================
+   SECONDARY BUTTONS
+========================================================= */
+
+.secondary-actions {
+  display: flex;
+
+  gap: 14px;
+
+  margin-top: 18px;
+}
+
+.secondary-actions button {
+  flex: 1;
+
+  padding: 14px;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(15,118,110,0.14);
+
+  background: rgba(255,255,255,0.45);
+
+  backdrop-filter: blur(12px);
+
+  color: #0f766e;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.secondary-actions button:hover {
+  transform: translateY(-2px);
+
+  background: rgba(255,255,255,0.78);
+
+  border-color: rgba(15,118,110,0.22);
+
+  box-shadow:
+    0 10px 24px rgba(15,118,110,0.08);
+}
+
+/* =========================================================
+   REMINDER BOX
+========================================================= */
+
+.mini-wellness-box {
+  margin-top: 28px;
+
+  padding: 24px;
+
+  border-radius: 26px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.58),
+    rgba(255,255,255,0.38)
+  );
+
+  border: 1px solid rgba(255,255,255,0.45);
+
+  backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 12px 30px rgba(15,118,110,0.06);
+}
+
+.mini-wellness-box h3 {
+  color: #134e4a;
+
+  margin-bottom: 12px;
+
+  font-size: 1.1rem;
+
+  font-weight: 700;
+}
+
+.mini-wellness-box p {
+  color: #5f7278;
+
+  line-height: 1.9;
+
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer-text {
+  margin-top: 24px;
+
+  color: #6b7d84;
+
+  font-size: 0.92rem;
+
+  line-height: 1.8;
+}
+
+/* =========================================================
+   JOURNAL SECTION
+========================================================= */
+
+.journal-section {
+  width: 100%;
+  max-width: 850px;
+
+  margin-top: 30px;
+
+  z-index: 2;
+
+  animation: fadeUp 0.4s ease;
+}
+
+.journal-section .premium-journal-card {
+  max-height: 800px;
+
+  overflow-y: auto;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .welcome-page {
+    padding: 24px 14px;
+  }
+
+  .welcome-card {
+    padding: 34px 22px;
+
+    border-radius: 28px;
+  }
+
+  .welcome-card h1 {
+    font-size: 2rem;
+  }
+
+  .typing-text {
+    font-size: 0.95rem;
+  }
+
+  .welcome-support {
+    font-size: 0.92rem;
+  }
+
+  .primary-btn {
+    padding: 15px;
+  }
+
+  .secondary-actions {
+    flex-direction: column;
+  }
+
+  .secondary-actions button {
+    width: 100%;
+  }
+
+  .mini-wellness-box {
+    padding: 20px;
+  }
+
+  .journal-section {
+    margin-top: 20px;
+  }
+
+  .welcome-page::before,
+  .welcome-page::after {
+    width: 260px;
+    height: 260px;
+
+    filter: blur(70px);
+  }
+}
+
+@media (max-width: 480px) {
+
+  .welcome-card {
+    padding: 28px 18px;
+  }
+
+  .welcome-card h1 {
+    font-size: 1.7rem;
+  }
+
+  .typing-text {
+    font-size: 0.9rem;
+  }
+
+  .welcome-support {
+    font-size: 0.88rem;
+  }
+
+  .primary-btn {
+    font-size: 0.92rem;
+  }
+
+  .secondary-actions button {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,631 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background: #f3faf9;
+  color: #0f172a;
+  line-height: 1.6;
+}
+ body, #root {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 70px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(240,253,250,0.85));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(15, 118, 110, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* LOGO */
+.logo {
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.6px;
+}
+
+.logo-light {
+  font-weight: 500;
+  color: #5eead4;
+}
+
+.logo-bold {
+  font-weight: 700;
+  color: #14b8a6;
+}
+
+.logo:hover .logo-bold {
+  color: #0d9488;
+  transition: 0.25s ease;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  margin-left: 24px;
+  text-decoration: none;
+  color: #334155;
+  font-weight: 500;
+  transition: 0.25s ease;
+}
+
+.nav-link:hover {
+  color: #0f766e;
+}
+
+/* BUTTON */
+.btn {
+  margin-left: 28px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #14b8a6, #0f766e);
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(15, 118, 110, 0.25);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(15, 118, 110, 0.35);
+  background: linear-gradient(135deg, #2dd4bf, #0f766e);
+}
+
+/* HERO */
+.hero {
+  min-height: 78vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(180deg, #e6f7f5, #f3faf9);
+  padding: 40px 20px 20px;
+}
+
+.hero-inner {
+  max-width: 750px;
+}
+
+.hero h1 {
+  font-size: 52px;
+  color: #0f766e;
+}
+
+.hero p {
+  color: #4b6f6d;
+  margin-top: 10px;
+}
+
+.primary-btn {
+  display: inline-block;
+  margin-top: 24px;
+  background: #0f766e;
+  color: white;
+  padding: 12px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+/* AWARENESS */
+.awareness {
+  padding: 70px 80px;
+  background: white;
+}
+
+.section-head {
+  margin-bottom: 50px;
+}
+
+.section-head h2 {
+  color: #0f766e;
+  font-size: 34px;
+}
+
+.awareness-block {
+  display: flex;
+  gap: 70px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.awareness-block img {
+  width: 48%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.awareness-block .text {
+  width: 52%;
+}
+
+.awareness-block h3 {
+  color: #0f766e;
+  font-size: 26px;
+}
+
+.awareness-block ul {
+  list-style: none;
+  padding: 0;
+}
+
+.awareness-block ul li {
+  margin: 8px 0;
+  padding-left: 16px;
+  position: relative;
+}
+
+.awareness-block ul li::before {
+  content: "•";
+  color: #0f766e;
+  position: absolute;
+  left: 0;
+}
+
+.quote {
+  margin-top: 12px;
+  padding-left: 12px;
+  border-left: 3px solid #0f766e;
+  font-style: italic;
+  color: #4b6f6d;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+/* HOW */
+.how {
+  padding: 100px 80px;
+  background: linear-gradient(135deg, #e6fffa, #f0fdfa);
+}
+
+/* SECTION TITLE */
+.section-title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 60px;
+  color: #0f766e;
+  letter-spacing: -0.5px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 260px);
+  justify-content: center;
+  gap: 35px;
+}
+
+/* CARD */
+.card {
+  position: relative;
+  padding: 40px 28px;
+  border-radius: 24px;
+  min-height: 280px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  box-shadow: 0 15px 40px rgba(15, 118, 110, 0.1);
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(20,184,166,0.25), transparent);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 25px 60px rgba(15, 118, 110, 0.25);
+  border-color: rgba(20,184,166,0.5);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.icon {
+  font-size: 28px;
+  margin-bottom: 18px;
+  background: linear-gradient(135deg, #14b8a6, #0f766e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-number {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 44px;
+  font-weight: 900;
+  color: rgba(20, 184, 166, 0.15);
+}
+
+.card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #134e4a;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4b6f6d;
+}
+
+.card h3::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  margin-top: 8px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #2dd4bf, rgba(45,212,191,0.2));
+}
+
+/* REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* DAILY CHECK — toned down */
+.daily-check {
+  padding: 60px 80px; /* match why/seek */
+  text-align: center;
+
+  /* SAME background system */
+  background: ##486a68;
+}
+
+/* remove decorative layers completely */
+.daily-check::before,
+.daily-check::after {
+  display: none;
+}
+
+/* content width aligned */
+.check-box {
+  max-width: 640px;
+  margin: auto;
+}
+
+/* heading consistency */
+.daily-check .section-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #0f766e;
+  margin-bottom: 10px;
+}
+
+/* text consistency */
+.check-box p {
+  font-size: 15.5px;
+  color: #486a68;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+/* pills — same as help section */
+.check-box ul {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 14px 0 16px;
+  list-style: none;
+}
+
+.check-box li {
+  padding: 7px 12px;
+  border-radius: 999px;
+
+  background: rgba(20,184,166,0.08);
+  color: #0f766e;
+
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+/* button — softer + consistent */
+.check-box .primary-btn {
+  padding: 10px 24px;
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #14b8a6, #0f766e);
+  color: white;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* subtle divider to connect flow */
+.daily-check::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1.5px;
+  margin: 25px auto 0;
+  background: rgba(20,184,166,0.15);
+}
+
+/* WHY + SEEK HELP (fixed flow) */
+.why,
+.seek-help {
+  padding: 40px 80px;
+  text-align: center;
+  margin: 0;
+}
+
+/* REMOVE default spacing chaos */
+.why h2,
+.seek-help h2 {
+  margin: 0 0 8px 0;   /* key fix: tight heading spacing */
+  font-size: 26px;     /* reduced from too large */
+  color: #0f766e;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+/* container */
+.why-box,
+.help-box {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* paragraph — closer to heading */
+.why-box p {
+  font-size: 15px;
+  color: #486a68;
+  margin: 6px 0 10px 0;  /* tighter spacing */
+  line-height: 1.6;
+}
+
+/* HELP LIST — compact */
+.help-box ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 0 0; /* removes extra bottom space */
+  padding: 0;
+  list-style: none;
+}
+
+.help-box li {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(20,184,166,0.08);
+  color: #0f766e;
+  font-size: 13px;
+}
+
+/* QUOTE — tighter and connected */
+.why .quote {
+  margin-top: 8px;
+  font-style: italic;
+  color: #3f5f5d;
+  line-height: 1.5;
+}
+
+/* SUPPORT */
+.support {
+  padding: 100px 80px;
+  text-align: center;
+  background: linear-gradient(180deg, #f0fdfa, #ffffff);
+}
+
+.support-box {
+  max-width: 800px;
+  margin: auto;
+}
+
+.line {
+  display: inline-block;
+  margin: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(20,184,166,0.08);
+  color: #0f766e;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #64748b;
+}
+@media (max-width: 1024px) {
+
+  /* global section spacing */
+  .awareness,
+  .how,
+  .daily-check,
+  .why,
+  .seek-help,
+  .support {
+    padding: 60px 40px;
+  }
+
+  /* navbar spacing fix */
+  .navbar {
+    padding: 12px 24px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  /* hero text scaling */
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  /* cards grid becomes 2 columns */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    padding: 26px 20px;
+  }
+
+  /* awareness blocks stack properly */
+  .awareness-block {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .awareness-block img,
+  .awareness-block .text {
+    width: 100%;
+  }
+}
+
+/* MOBILE (PHONE) */
+@media (max-width: 768px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  /* navbar becomes compact */
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+
+  /* hero */
+  .hero {
+    padding: 40px 16px;
+    min-height: 70vh;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+    line-height: 1.3;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  /* sections spacing reduced */
+  .awareness,
+  .how,
+  .daily-check,
+  .why,
+  .seek-help,
+  .support {
+    padding: 40px 16px;
+  }
+
+  /* grid becomes single column */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* cards smaller */
+  .card {
+    padding: 20px;
+  }
+
+  /* awareness stack */
+  .awareness-block {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .awareness-block img {
+    height: 220px;
+  }
+
+  /* headings smaller */
+  .section-title {
+    font-size: 24px;
+  }
+
+  /* daily check polish */
+  .check-box ul {
+    gap: 6px;
+  }
+
+  .check-box li {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  /* support pills wrap better */
+  .line {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
+
+/* SMALL PHONES */
+@media (max-width: 480px) {
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .hero p {
+    font-size: 13px;
+  }
+
+  .btn,
+  .primary-btn {
+    font-size: 13px;
+    padding: 10px 18px;
+  }
+
+  .card-number {
+    font-size: 32px;
+  }
+}
